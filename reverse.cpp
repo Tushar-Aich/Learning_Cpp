@@ -1,17 +1,17 @@
 #include<iostream>
+#include<cmath>
 using namespace std;
 int main(){
 
-    int n;
-    cout<<"enter the value for n"<<endl;
-    cin>>n;
+    int x;
+    cout<<"enter the value for x :: ";
+    cin>>x;
 
-    int reverse=0;
-    while(n>0){
-        int lastdigit=n%10;
-        reverse=reverse*10+lastdigit;
-        n=n/10;
+    long reverse = 0;
+    while(x != 0){
+        reverse = reverse * 10 + x % 10;
+        x = x / 10;
     }
-    cout<<reverse;
+    cout << reverse;
     return 0;
 }

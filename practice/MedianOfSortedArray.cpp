@@ -1,34 +1,39 @@
-#include<iostream>
-#include<array>
+#include <iostream>
+#include <vector>
+#include<algorithm>
 using namespace std;
 
-void merge(int *arr1, int *arr2, int *arr3, int n1, int n2){
-    int index1 = 0;
-    int index2 = 0;
-    int index3 = 0;
-    while(index1 < n1 && index2 < n2){
-        if(arr1[index1] < arr2[index2]) arr3[index3++] = arr1[index1++];
-        else arr3[index3++] = arr2[index2++];
+void merge(int *arr1, int *arr2, int size1, int size2, vector<int> &ans){
+    for(int i = 0; i < size1; i++){
+            ans.push_back(arr1[i]);
     }
-    while(index2 < n2) arr3[index3++] = arr1[index2++];
-    while(index1 < n1) arr3[index3++] = arr1[index1++];
+    for(int i = 0; i < size2; i++){
+        ans.push_back(arr2[i]);
+    }
 }
 
-int main(){
-    int arr1[] = {1,4,8};
+int main()
+{
+    int arr1[] = {2,3};
     int size1 = sizeof(arr1)/sizeof(arr1[0]);
-    int arr2[] = {2,3,9};
+    int arr2[] = {1,4}; 
     int size2 = sizeof(arr2)/sizeof(arr2[0]);
-    int arr3[6];
-    int size3 = size1 + size2;
-    cout << "Size 3 is: " << size3 << endl;
+    vector<int> ans;
 
-    merge(arr1, arr2, arr3, size1, size2);
-    for(int i = 0; i < size3; i++){
-        cout << arr3[i] << " ";
+    merge(arr1, arr2, size1, size2, ans);
+    sort(ans.begin(), ans.end());
+
+    int index = ans.size()/2;
+
+    double median;
+    if(ans.size() % 2 == 0){
+        median = (ans.at(index - 1) + ans.at(index));
+        median /= 2;
+    }else{
+        median = ans.at(index);
     }
-    cout << endl;
 
+    cout << median << endl;
 
     return 0;
 }
