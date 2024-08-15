@@ -1,19 +1,12 @@
 #include<iostream>
+#include<vector>
+#include<algorithm>
 using namespace std;
 
 int main(){
-    int array[]={1,2,3,4,5,6,3,4};
-    int size=sizeof(array)/sizeof(array[0]);
-    cout<<"size of the array is "<<size<<endl;
-
-    cout<<"the duplicate number is : ";
-    for(int i=0; i<size; i++){
-        for(int j=i+1; j<size;j++){
-            if(array[i]==array[j]){
-                cout<<array[i]<<" ";
-            }
-        }
-    }
+    vector<int> nums = {1,1,1,2,3,4,5,5,7,3,6,2,9,1};
+    int size = nums.size();
+    
     return 0;
 }
    
