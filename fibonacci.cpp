@@ -1,12 +1,13 @@
 #include<iostream>
+#include<vector>
 using namespace std;
 
-int fibonacci(int n) {
+int fibonacci(int n, vector<int> &dp) {
     //basecase
-    if(n == 1) return 0;
-    if(n == 2) return 1;
+    if(n <= 1) return n;
+    if(dp[n] != -1) return dp[n];
 
-    return fibonacci(n - 1) + fibonacci(n  - 2);
+    return dp[n] = fibonacci(n - 1, dp) + fibonacci(n  - 2, dp);
     
 }
 
@@ -14,9 +15,8 @@ int main(){
     int n;
     cout <<"Enter the value for n: ";
     cin >> n;
-
-    int ans = fibonacci(n);
-    cout << ans << endl;
+    vector<int> dp(n+1, -1);
+    cout << fibonacci(n, dp);
 
     return 0;
 }
