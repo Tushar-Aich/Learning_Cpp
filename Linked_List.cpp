@@ -10,7 +10,6 @@ class Node {
             this->data = data1;
             this->next = next1;
         }
-        
         Node(int data1){
             this->data = data1;
             this->next = nullptr;
@@ -20,7 +19,7 @@ class Node {
 Node* convertArr2LL(vector<int> &arr){
     Node* head = new Node(arr[0]);
     Node* mover = head;
-    for(int i  = 1; i < arr.size(); i++){
+    for(int i = 1; i < arr.size(); i++){
         Node* temp = new Node (arr[i]);
         mover->next = temp;
         mover = temp;
@@ -59,5 +58,6 @@ int main(){
     }cout << endl;
 
     cout << "Length of the Linked List is :: " << lengthLL(head) << endl;
+
     return 0;   
 }
